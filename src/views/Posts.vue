@@ -52,11 +52,11 @@ export default {
   methods: {
     async getData() {
       try {
-        const resPosts = await fetch("https://intense-waters-27320.herokuapp.com/posts");
+        const resPosts = await fetch("https://flippia-api.herokuapp.com/posts");
         this.posts = await resPosts.json();
         this.posts.forEach(() => this.replyNum.push(0));
 
-        const resReplies = await fetch("https://intense-waters-27320.herokuapp.com/replies");
+        const resReplies = await fetch("https://flippia-api.herokuapp.com/replies");
         this.replies = await resReplies.json();
         this.replies.forEach((reply) => this.replyNum[reply.postID - 1]++);
       } catch (err) {

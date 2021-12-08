@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     GetReplies() {
-      fetch("https://intense-waters-27320.herokuapp.com/replies")
+      fetch("https://flippia-api.herokuapp.com/replies")
         .then((res) => res.json())
         .then((data) => {
           this.replies = data.filter(
@@ -48,11 +48,11 @@ export default {
         .catch((err) => console.log(err.message));
     },
     handleDelete() {
-      fetch("https://intense-waters-27320.herokuapp.com/posts/" + this.id, {
+      fetch("https://flippia-api.herokuapp.com/posts/" + this.id, {
         method: "DELETE",
       })
         .then(() => {
-          fetch("https://intense-waters-27320.herokuapp.com/replies")
+          fetch("https://flippia-api.herokuapp.com/replies")
             .then((res) => {
               return res.json();
             })
@@ -60,7 +60,7 @@ export default {
               data
                 .filter((replies) => replies.postID === Number(this.id))
                 .forEach((reply) => {
-                  fetch("https://intense-waters-27320.herokuapp.com/replies/" + reply.id, {
+                  fetch("https://flippia-api.herokuapp.com/replies/" + reply.id, {
                     method: "DELETE",
                   });
                 });
@@ -72,7 +72,7 @@ export default {
     },
   },
   mounted() {
-    fetch(`https://intense-waters-27320.herokuapp.com/posts/${this.id}`)
+    fetch(`https://flippia-api.herokuapp.com/posts/${this.id}`)
       .then((res) => res.json())
       .then((data) => (this.post = data))
       .catch((err) => console.log(err.message));
