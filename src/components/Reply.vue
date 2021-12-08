@@ -35,7 +35,7 @@ export default {
         postID: Number(this.id),
       };
       if (this.author !== "" && this.email !== "" && this.body !== "") {
-        fetch("https://intense-waters-27320.herokuapp.com/replies/", {
+        fetch("https://flippia-api.herokuapp.com/replies/", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(reply),
